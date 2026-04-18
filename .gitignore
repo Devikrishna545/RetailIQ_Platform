@@ -1,0 +1,33 @@
+# Virtual environment
+.venv/
+venv/
+
+# Data files (too large for git)
+data/
+*.csv
+*.xlsx
+*.parquet
+*.db
+
+# Model artifacts
+models/
+mlruns/
+mlartifacts/
+
+# Environment secrets
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db

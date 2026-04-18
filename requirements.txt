@@ -1,0 +1,132 @@
+# ==============================================================================
+# RetailIQ — Master Requirements
+# Python 3.11+ recommended
+# Usage: pip install -r requirements.txt
+# ==============================================================================
+
+
+# ------------------------------------------------------------------------------
+# WEEKEND 1 — Core Data & Project Setup
+# ------------------------------------------------------------------------------
+pandas==2.2.2
+numpy==1.26.4
+openpyxl==3.1.2          # read Excel files (Online Retail II is .xlsx)
+sqlalchemy==2.0.30        # SQLite ORM + query interface
+pyarrow==15.0.2         # read/write parquet files choose<16.0.0 
+fastparquet==2024.2.0     # alternative parquet engine
+python-dotenv==1.0.1      # load .env secrets
+loguru==0.7.2             # clean structured logging
+tqdm==4.66.4              # progress bars
+pre-commit==3.7.1         # git hooks (black, ruff, isort)
+black==24.4.2             # code formatter
+ruff==0.4.4               # linter (replaces flake8)
+isort==5.13.2             # import sorter
+
+
+# ------------------------------------------------------------------------------
+# WEEKEND 2 — EDA & Statistics
+# ------------------------------------------------------------------------------
+matplotlib==3.8.4
+seaborn==0.13.2
+plotly==5.22.0            # interactive charts in notebooks
+scipy==1.13.0             # t-test, chi-square, ADF test
+statsmodels==0.14.2       # statistical tests, decomposition
+sweetviz==2.3.1           #ydata-profiling==4.8.0    # auto EDA reports (formerly pandas-profiling)
+ipykernel==6.29.4         # run notebooks in VS Code
+jupyter==1.0.0
+nbformat==5.10.4
+
+
+# ------------------------------------------------------------------------------
+# WEEKEND 3 — Feature Engineering & Clustering
+# ------------------------------------------------------------------------------
+scikit-learn==1.4.2       # KMeans, PCA, StandardScaler, Pipeline
+yellowbrick==1.5          # elbow plots, silhouette visualizer
+
+
+# ------------------------------------------------------------------------------
+# WEEKEND 4 & 5 — Churn Modeling
+# ------------------------------------------------------------------------------
+xgboost==2.0.3
+lightgbm==4.3.0
+imbalanced-learn==0.12.3  # SMOTE, RandomOverSampler
+optuna==3.6.1             # Bayesian hyperparameter tuning
+optuna-dashboard==0.15.1  # visual tuning dashboard
+shap==0.45.0              # model interpretability
+mlflow==2.13.0            # experiment tracking + model registry
+category-encoders==2.6.3  # target encoding, binary encoding
+
+
+# ------------------------------------------------------------------------------
+# WEEKEND 6 — Time Series Forecasting
+# ------------------------------------------------------------------------------
+prophet==1.1.5            # Facebook/Meta Prophet
+pmdarima==2.0.4           # auto-ARIMA (wraps statsmodels SARIMA)
+#neuralprophet==0.9.2      # optional: neural extension of Prophet
+
+
+# ------------------------------------------------------------------------------
+# WEEKEND 7 — Recommenders + Classical NLP
+# ------------------------------------------------------------------------------
+implicit==0.7.2           # ALS collaborative filtering (fast C++ backend)
+nltk==3.8.1               # tokenization, stopwords, lemmatization
+spacy==3.8.2              # NLP pipeline, lemmatizer
+gensim==4.3.2             # Word2Vec, Doc2Vec
+wordcloud==1.9.3          # quick visual for topics
+
+
+# ------------------------------------------------------------------------------
+# WEEKEND 8 — Transformers + Deep Learning
+# ------------------------------------------------------------------------------
+torch==2.3.0              # PyTorch (CPU version; add +cu121 for CUDA)
+transformers==4.41.1      # HuggingFace DistilBERT + Trainer
+datasets==2.19.1          # HuggingFace datasets (Amazon reviews)
+accelerate==0.30.1        # required by HuggingFace Trainer
+tokenizers==0.19.1        # fast tokenizers
+evaluate==0.4.2           # HuggingFace metrics (accuracy, f1)
+bertopic==0.16.2          # topic modelling via embeddings + clustering
+sentence-transformers==3.0.0  # embeddings for BERTopic + RAG
+
+
+# ------------------------------------------------------------------------------
+# WEEKEND 9 — Deployment
+# ------------------------------------------------------------------------------
+fastapi==0.111.0          # REST API framework
+uvicorn[standard]==0.29.0 # ASGI server for FastAPI
+pydantic==2.7.1           # request/response schemas
+pydantic-settings==2.2.1  # settings from .env
+streamlit==1.35.0         # analytics dashboard
+streamlit-option-menu==0.3.12  # sidebar nav component
+pytest==8.2.0             # unit testing
+pytest-cov==5.0.0         # coverage reporting
+httpx==0.27.0             # async HTTP client (FastAPI test client)
+slowapi==0.1.9            # rate limiting for FastAPI
+
+
+# ------------------------------------------------------------------------------
+# WEEKEND 10 — AI Layer (RAG + Agents + LLM)
+# ------------------------------------------------------------------------------
+langchain==0.2.1
+langchain-community==0.2.1
+langchain-anthropic==0.1.13   # Claude API via LangChain
+langchain-openai==0.1.8       # optional: OpenAI via LangChain
+anthropic==0.28.0             # direct Anthropic SDK
+openai==1.30.1                # direct OpenAI SDK (optional)
+chromadb==0.4.24               # local vector store for RAG
+faiss-cpu==1.8.0              # alternative vector store
+tiktoken==0.7.0               # token counting for OpenAI models
+sqlparse==0.5.0               # SQL validation for NL→SQL agent
+
+
+# ------------------------------------------------------------------------------
+# UTILITIES (used throughout)
+# ------------------------------------------------------------------------------
+rich==13.7.1              # pretty terminal output
+click==8.1.7              # CLI commands
+joblib==1.4.2             # model serialization, parallel jobs
+dill==0.3.8               # pickle extension (serialize lambdas)
+requests==2.32.2          # HTTP requests
+aiohttp==3.9.5            # async HTTP
+python-multipart==0.0.9   # file upload support in FastAPI
+Pillow==10.3.0            # image handling (plots, dashboard)
+kaleido==0.2.1            # export plotly charts as static images
