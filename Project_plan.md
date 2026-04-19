@@ -20,12 +20,12 @@
 <a id="pre-kickoff"></a>
 ## 1. Pre-Kickoff Checklist (before Weekend 1)
 
-- [ ] Install Python 3.11+, VS Code / Cursor, Git
-- [ ] Create GitHub repo: `retailiq-platform`
+- [x] Install Python 3.11+, VS Code / Cursor, Git
+- [x] Create GitHub repo: `retailiq-platform`
 - [ ] Sign up: MLflow (local is fine), HuggingFace, Anthropic or OpenAI API key
-- [ ] Download datasets:
-  - [ ] UCI Online Retail II — https://archive.ics.uci.edu/dataset/502/online+retail+ii
-  - [ ] Amazon Fine Food Reviews — Kaggle
+- [x] Download datasets:
+  - [x] UCI Online Retail II — https://archive.ics.uci.edu/dataset/502/online+retail+ii
+  - [x] Amazon Fine Food Reviews — Kaggle
 - [ ] Install Docker Desktop
 - [ ] Decide time budget per weekend & put 10 slots on your calendar
 
