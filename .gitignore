@@ -3,7 +3,7 @@
 venv/
 
 # Data files (too large for git)
-data/
+/data/
 *.csv
 *.xlsx
 *.parquet
