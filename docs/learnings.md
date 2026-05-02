@@ -15,3 +15,10 @@ IQR. Discovered two statistically significant findings: non-UK customers
 spend nearly double per order (£875 vs £489, p≈0), and return rates 
 differ significantly by region (Chi2=593, p≈0) — both will become 
 features in the churn model.
+
+## Weekend 3
+Built RFM features and segmented 5,878 customers into 4 groups using 
+K-Means. Silhouette score suggested k=2 but business context demanded 
+k=4 — a key lesson that metrics inform but domain knowledge decides. 
+Found that 875 VIP customers (15%) drive 68% of total revenue, a 
+classic Pareto pattern that will directly inform churn model priorities.
