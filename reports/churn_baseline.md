@@ -1,4 +1,4 @@
-# Churn Model — Baseline Report
+# Churn Model â€” Baseline Report
 
 ## Logistic Regression (baseline)
 
@@ -6,7 +6,7 @@
 - **class_weight**: balanced
 - **roc_auc_train**: 0.8998
 - **roc_auc_val**: 0.9046
-- **avg_precision_val**: 0.9367
+- **avg_precision_val**: 0.9366
 - **f1_val**: 0.8015
 - **accuracy_val**: 0.8018
 

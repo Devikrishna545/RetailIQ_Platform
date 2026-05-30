@@ -23,16 +23,26 @@ warnings.filterwarnings("ignore")
 
 # ── Paths ──────────────────────────────────────────────────────────────────
 ROOT = Path(__file__).resolve().parents[2]
-DB_PATH = ROOT / "data" / "retail.db"
-OUTPUT_PATH = ROOT / "data" / "retail_clean.parquet"
+DATA_DIR = ROOT / "data"
+DB_PATH = DATA_DIR / "retail.db"
+OUTPUT_PATH = DATA_DIR / "retail_clean.parquet"
+
+
+def validate_inputs() -> None:
+    """Ensure expected upstream assets are present before processing."""
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    if not DB_PATH.exists():
+        raise FileNotFoundError(
+            f"Database not found: {DB_PATH}. "
+            "Run src/data/load_retail.py first to build transactions table."
+        )
 
 
 def load_raw(db_path: Path) -> pd.DataFrame:
     """Load raw transactions from SQLite."""
     logger.info("Loading raw transactions from SQLite...")
-    conn = sqlite3.connect(db_path)
-    df = pd.read_sql_query("SELECT * FROM transactions", conn)
-    conn.close()
+    with sqlite3.connect(db_path) as conn:
+        df = pd.read_sql_query("SELECT * FROM transactions", conn)
 
     # Fix types
     df["invoicedate"] = pd.to_datetime(df["invoicedate"])
@@ -142,6 +152,7 @@ def run_pipeline() -> pd.DataFrame:
     logger.info("Starting cleaning pipeline...")
     logger.info("═" * 50)
 
+    validate_inputs()
     df = load_raw(DB_PATH)
     df = remove_duplicates(df)
     df, returns = separate_returns(df)
@@ -157,7 +168,7 @@ def run_pipeline() -> pd.DataFrame:
     logger.success(f"Clean dataset saved → {OUTPUT_PATH}")
 
     # Save returns separately (useful for future analysis)
-    returns_path = ROOT / "data" / "retail_returns.parquet"
+    returns_path = DATA_DIR / "retail_returns.parquet"
     returns.to_parquet(returns_path, index=False)
     logger.success(f"Returns dataset saved → {returns_path}")
 

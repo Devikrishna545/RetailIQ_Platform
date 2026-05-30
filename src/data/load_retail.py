@@ -19,6 +19,13 @@ DB_PATH = DATA_DIR / "retail.db"
 
 def load_excel_to_df() -> pd.DataFrame:
     """Read both sheets from Excel and combine into one DataFrame."""
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    if not EXCEL_PATH.exists():
+        raise FileNotFoundError(
+            f"Dataset not found: {EXCEL_PATH}. "
+            "Place online_retail_II.xlsx in the project data/ folder."
+        )
+
     logger.info("Reading Sheet 1 (2009-2010)...")
     df1 = pd.read_excel(EXCEL_PATH, sheet_name="Year 2009-2010", engine="openpyxl")
 
@@ -42,6 +49,7 @@ def standardise_columns(df: pd.DataFrame) -> pd.DataFrame:
 
 def save_to_sqlite(df: pd.DataFrame) -> None:
     """Write DataFrame to SQLite table: transactions."""
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
     logger.info(f"Saving {len(df):,} rows to {DB_PATH}...")
     conn = sqlite3.connect(DB_PATH)
     df.to_sql("transactions", conn, if_exists="replace", index=False)

@@ -23,6 +23,12 @@ def run_query(conn: sqlite3.Connection, title: str, sql: str) -> None:
 
 
 def main() -> None:
+    if not DB_PATH.exists():
+        raise FileNotFoundError(
+            f"Database not found: {DB_PATH}. "
+            "Run src/data/load_retail.py first."
+        )
+
     conn = sqlite3.connect(DB_PATH)
 
     # ── Query 1: Top 10 countries by total revenue ──────────────
